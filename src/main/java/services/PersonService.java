@@ -1,29 +1,28 @@
 package services;
 
-import DAO.PersonDao;
-import entities.Person;
+import DAO.PersonDAO;
+import Enteties.Person;
 
 import java.util.List;
 
 public class PersonService {
-    private PersonDao personsDao = new PersonDao();
+    private PersonDAO personsDAO = new PersonDAO();
 
     public PersonService(){
     }
-    public Person findPerson(int id){
-        return personsDao.findById(id);
+
+    public void addPerson(Person person){
+        personsDAO.addPerson(person);
     }
-    public void savePerson(Person person){
-        personsDao.save(person);
+    public Person getPersonById(int id){
+        return personsDAO.getPersonById(id);
     }
-    public void deletePerson(Person person){
-        personsDao.delete(person);
+    public List<Person> getPersonByName(String name){
+        return personsDAO.getPersonByName(name);
     }
-    public  void  updatePerson(Person person){
-        personsDao.update(person);
-    }
-    public List<Person> findAllPersons(){
-        return personsDao.findAll();
+
+    public List<Person> getPersonAll(){
+        return personsDAO.getPersonAll();
     }
 
 }

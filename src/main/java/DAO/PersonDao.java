@@ -1,39 +1,64 @@
 package DAO;
 
-import entities.Person;
-import entities.Residence;
+import Enteties.Person;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
-import util.HibernateSessionFactoryUtil;
+import org.hibernate.query.Query;
+import util.HibernateUtil;
 
 import java.util.List;
 
-public class PersonDao {
-    public Person findById(int id){
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Person.class, id);
-    }
-    public void save(Person person){
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
+public class PersonDAO {
+
+    public void addPerson(Person person){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
         session.save(person);
-        tx1.commit();
+        session.getTransaction().commit();
         session.close();
     }
-    public void update(Person person){
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
+
+    public void updatePerson(Person person) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
         session.update(person);
-        tx1.commit();
+        session.getTransaction().commit();
         session.close();
     }
-    public void delete(Person person) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
+
+    public void deletePerson(Person person) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
         session.delete(person);
-        tx1.commit();
+        session.getTransaction().commit();
         session.close();
     }
-    public List<Person> findAll(){
-        return (List<Person>) HibernateSessionFactoryUtil.getSessionFactory().openSession().createQuery("FROM  Person ").list();
+
+    public Person getPersonById(int personId) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query<Person> query = session.createQuery("FROM Person WHERE person_id = :param", Person.class)
+                .setParameter("param", personId);
+        if (query.getResultList().size() == 0) {
+            return null;
+        }
+        return query.getResultList().get(0);
+    }
+
+    public List<Person> getPersonByName(String personName) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query<Person> query = session.createQuery("FROM Person WHERE name LIKE :gotName", Person.class)
+                .setParameter("gotName", "%" + personName + "%");
+        if (query.getResultList().size() == 0) {
+            return null;
+        }
+        return query.getResultList();
+    }
+
+    public List<Person> getPersonAll() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query<Person> query = session.createQuery("FROM Person", Person.class);
+        if (query.getResultList().size() == 0) {
+            return null;
+        }
+        return query.getResultList();
     }
 }
