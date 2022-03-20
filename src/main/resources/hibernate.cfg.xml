@@ -11,8 +11,11 @@
         <property name="connection.password">5555</property>
         <property name="show_sql">true</property>
 
-        <mapping class="Enteties.Person"/>
-<!--        <mapping class="Enteties.Residence"/>-->
+        <mapping class="Entities.Person"/>
+        <mapping class="Entities.Residence"/>
+        <mapping class="Entities.Relationship"/>
+        <mapping class="Entities.RelationshipType"/>
+        <mapping class="Entities.RoleType"/>
 
     </session-factory>
 </hibernate-configuration>

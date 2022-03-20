@@ -1,6 +1,6 @@
 package DAO;
 
-import Enteties.Residence;
+import Entities.Residence;
 import org.hibernate.Session;
 import util.HibernateUtil;
 

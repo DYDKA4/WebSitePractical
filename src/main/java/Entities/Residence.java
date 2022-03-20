@@ -1,4 +1,4 @@
-package Enteties;
+package Entities;
 
 import lombok.Getter;
 import lombok.NonNull;
@@ -17,6 +17,7 @@ public class Residence {
 
 
     @Column(name = "id_residence")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int id;
 

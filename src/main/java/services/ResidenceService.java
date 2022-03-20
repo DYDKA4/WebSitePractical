@@ -2,7 +2,7 @@ package services;
 
 
 import DAO.ResidenceDAO;
-import Enteties.Residence;
+import Entities.Residence;
 
 public class ResidenceService {
     private ResidenceDAO residenceDAO = new ResidenceDAO();

@@ -1,6 +1,6 @@
 package DAO;
 
-import Enteties.Person;
+import Entities.Person;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import util.HibernateUtil;

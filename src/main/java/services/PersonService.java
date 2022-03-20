@@ -1,7 +1,7 @@
 package services;
 
 import DAO.PersonDAO;
-import Enteties.Person;
+import Entities.Person;
 
 import java.util.List;
 
@@ -10,7 +10,8 @@ public class PersonService {
 
     public PersonService(){
     }
-
+    public void deletePerson(Person person){ personsDAO.deletePerson(person); }
+    public void updatePerson(Person person){ personsDAO.updatePerson(person); }
     public void addPerson(Person person){
         personsDAO.addPerson(person);
     }

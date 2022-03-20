@@ -1,7 +1,7 @@
 
 package util;
 
-import Enteties.Person;
+import Entities.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -13,6 +13,10 @@ public class HibernateUtil {
             sessionFactory = new Configuration()
                     .configure()
                     .addAnnotatedClass(Person.class)
+                    .addAnnotatedClass(Residence.class)
+                    .addAnnotatedClass(Relationship.class)
+                    .addAnnotatedClass(RelationshipType.class)
+                    .addAnnotatedClass(RoleType.class)
                     .buildSessionFactory();
         } catch (Throwable ex) {
             System.err.println("Initial SessionFactory creation failed." + ex);
