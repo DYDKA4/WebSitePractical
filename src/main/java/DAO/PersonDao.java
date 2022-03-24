@@ -4,7 +4,7 @@ import Entities.Person;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import util.HibernateUtil;
-
+import org.hibernate.*;
 import java.util.List;
 
 public class PersonDAO {
@@ -33,14 +33,11 @@ public class PersonDAO {
         session.close();
     }
 
-    public Person getPersonById(int personId) {
+    public Person getPersonById(Long id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Query<Person> query = session.createQuery("FROM Person WHERE person_id = :param", Person.class)
-                .setParameter("param", personId);
-        if (query.getResultList().size() == 0) {
-            return null;
-        }
-        return query.getResultList().get(0);
+        Person entity = (Person) session.get(Person.class, id);
+        session.close();
+        return entity;
     }
 
     public List<Person> getPersonByName(String personName) {

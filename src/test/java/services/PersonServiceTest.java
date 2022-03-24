@@ -45,23 +45,18 @@ class PersonServiceTest {
     void getPersonByName(){
         PersonService personService = new PersonService();
         Person expected_person = new Person("Test", Date.valueOf("1999-12-12"));
-        for (int x = 0; x < 5; x++)
-            personService.addPerson(expected_person);
-        List<Person> persons = personService.getPersonByName(expected_person.getName());
-        for (Person person : persons) {
-            assertEquals(expected_person.getName(), person.getName());
-            assertEquals(expected_person.getBorn(), person.getBorn());
-            assertEquals(expected_person.getDeath(), person.getDeath());
-            personService.deletePerson(person);
-        }
-        persons = personService.getPersonByName(expected_person.getName());
-        assertNull(persons);
+        personService.addPerson(expected_person);
+        Person person = personService.getPersonByName(expected_person.getName()).get(0);
+        assertEquals(expected_person.getName(), person.getName());
+        assertEquals(expected_person.getBorn(), person.getBorn());
+        assertEquals(expected_person.getDeath(), person.getDeath());
+        personService.deletePerson(person);
     }
 
     @Test
     void getPersonByIdNull(){
         PersonService personService = new PersonService();
-        Person person = personService.getPersonById(-1);
+        Person person = personService.getPersonById(-1L);
         assertNull(person);
     }
 

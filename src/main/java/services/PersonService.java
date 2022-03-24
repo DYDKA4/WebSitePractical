@@ -15,7 +15,7 @@ public class PersonService {
     public void addPerson(Person person){
         personsDAO.addPerson(person);
     }
-    public Person getPersonById(int id){
+    public Person getPersonById(Long id){
         return personsDAO.getPersonById(id);
     }
     public List<Person> getPersonByName(String name){

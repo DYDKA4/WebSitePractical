@@ -16,10 +16,18 @@ public class RelationshipType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_relationship_type")
-    private int id;
+    private Long id;
 
     @Column(name = "name_of_relationship")
     @NonNull
     private String name;
+
+    public RelationshipType(@NonNull String name){
+
+        this.name = name;
+    }
+    public RelationshipType() {
+
+    }
 
 }

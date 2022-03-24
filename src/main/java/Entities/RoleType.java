@@ -17,8 +17,16 @@ public class RoleType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "role_type_id")
-    private int id;
+    private Long id;
 
     @Column(name = "role_name")
+    @NonNull
     private String name;
+
+    public RoleType(@NonNull String name){
+        this.name = name;
+    }
+    public RoleType(){
+
+    }
 }

@@ -19,7 +19,7 @@ public class Residence {
     @Column(name = "id_residence")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private int id;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_person_person")
