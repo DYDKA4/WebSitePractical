@@ -5,6 +5,7 @@ import Entities.Residence;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Date;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -77,5 +78,12 @@ class ResidenceServiceTest {
         Residence actual_residence = residenceService.getResidenceById(expected_residence.getId());
         assertNull(actual_residence);
 
+    }
+
+    @Test
+    void getResidenceByAddressNULL() {
+        ResidenceService residenceService = new ResidenceService();
+        List<Residence> actual_residence = residenceService.getResidenceByAddress("NULLABLE TEST");
+        assertNull(actual_residence);
     }
 }

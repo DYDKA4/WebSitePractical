@@ -77,4 +77,17 @@ class PersonServiceTest {
         actual_person = personService.getPersonById(expected_person.getId());
         assertNull(actual_person);
     }
+
+    @Test
+    void getPersonAll(){
+        PersonService personService = new PersonService();
+        Person expected_person = new Person("Test", Date.valueOf("1999-12-12"));
+        personService.addPerson(expected_person);
+        Person actual_person = personService.getPersonAll().get(personService.getPersonAll().size()-1);
+        assertEquals(expected_person.getName(), actual_person.getName());
+        assertEquals(expected_person.getBorn(), actual_person.getBorn());
+        assertEquals(expected_person.getDeath(), actual_person.getDeath());
+        personService.deletePerson(expected_person);
+
+    }
 }

@@ -7,6 +7,7 @@ import Entities.RoleType;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Date;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -201,5 +202,31 @@ class RelationshipServiceTest {
         roleTypeService.deleteRoleType(roleType2);
         relationshipTypeService.deleteRelationshipType(relationshipType1);
         relationshipTypeService.deleteRelationshipType(relationshipType2);
+    }
+
+    @Test
+    void getRelationshipByPerson2NULL() {
+
+        RelationshipService relationshipService = new RelationshipService();
+
+        List<Relationship> actual_relationship = relationshipService.getRelationshipByPerson2(-1L);
+        assertNull(actual_relationship);
+
+
+    }
+
+    @Test
+    void getRelationshipBetweenPerson1Person2NULL() {
+
+        RelationshipService relationshipService = new RelationshipService();
+        PersonService personService = new PersonService();
+        Person person1 = new Person("Test 1", Date.valueOf("1999-12-12"));
+        person1.setId(-1L);
+        Person person2 = new Person("Test 2", Date.valueOf("1999-12-12"));
+        person2.setId(-2L);
+        List<Relationship> actual_relationship = relationshipService.getRelationshipBetweenPerson1Person2(person1, person2);
+        assertNull(actual_relationship);
+
+
     }
 }
