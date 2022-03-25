@@ -319,4 +319,5 @@ class RelationshipServiceTest {
         relationshipTypeService.deleteRelationshipType(relationshipType2);
     }
 
+
 }

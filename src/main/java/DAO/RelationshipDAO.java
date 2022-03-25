@@ -52,7 +52,7 @@ public class RelationshipDAO {
         return query.getResultList();
     }
 
-    public List<Relationship> getRelationshipBetweenPerson1Person2(@NonNull Person person1, @NonNull Person person2){
+    public List<Relationship> getRelationshipBetweenPerson1Person2(Person person1,Person person2){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Query<Relationship> query = session.createQuery("FROM Relationship WHERE id_person_person_2 = :gotID2" +
                         " AND id_person_person_1 = :gotID1", Relationship.class);
