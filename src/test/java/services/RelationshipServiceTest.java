@@ -226,7 +226,97 @@ class RelationshipServiceTest {
         person2.setId(-2L);
         List<Relationship> actual_relationship = relationshipService.getRelationshipBetweenPerson1Person2(person1, person2);
         assertNull(actual_relationship);
-
-
     }
+
+    @Test
+    void getRelationshipBetweenPerson1Person2Reversed() {
+        PersonService personService = new PersonService();
+        Person person1 = new Person("Test 1", Date.valueOf("1999-12-12"));
+        Person person2 = new Person("Test 2", Date.valueOf("1999-12-12"));
+        personService.addPerson(person1);
+        personService.addPerson(person2);
+
+        RoleTypeService roleTypeService = new RoleTypeService();
+        RoleType roleType1 = new RoleType("Test 1");
+        RoleType roleType2 = new RoleType("Test 2");
+        roleTypeService.addRoleType(roleType1);
+        roleTypeService.addRoleType(roleType2);
+
+        RelationshipTypeService relationshipTypeService = new RelationshipTypeService();
+        RelationshipType relationshipType1 = new RelationshipType("Test 1");
+        RelationshipType relationshipType2 = new RelationshipType("Test 2");
+        relationshipTypeService.addRelationshipType(relationshipType1);
+        relationshipTypeService.addRelationshipType(relationshipType2);
+
+        RelationshipService relationshipService = new RelationshipService();
+        Relationship expected_relationship = new Relationship(person1, person2,roleType1,roleType2,
+                relationshipType1,relationshipType2);
+        relationshipService.addRelationship(expected_relationship);
+
+        Relationship actual_relationship = relationshipService.getRelationshipBetweenPerson1Person2(person2,person1).get(0);
+        assertEquals(expected_relationship.getId(),actual_relationship.getId());
+        assertEquals(expected_relationship.getType_relationship_1().getId(),actual_relationship.getType_relationship_1().getId());
+        assertEquals(expected_relationship.getType_relationship_2().getId(),actual_relationship.getType_relationship_2().getId());
+        assertEquals(expected_relationship.getRole_1().getId(),actual_relationship.getRole_1().getId());
+        assertEquals(expected_relationship.getRole_2().getId(),actual_relationship.getRole_2().getId());
+        assertEquals(expected_relationship.getPerson_1().getId(),actual_relationship.getPerson_1().getId());
+        assertEquals(expected_relationship.getPerson_2().getId(),actual_relationship.getPerson_2().getId());
+
+
+        relationshipService.deleteRelationship(expected_relationship);
+        personService.deletePerson(person1);
+        personService.deletePerson(person2);
+        roleTypeService.deleteRoleType(roleType1);
+        roleTypeService.deleteRoleType(roleType2);
+        relationshipTypeService.deleteRelationshipType(relationshipType1);
+        relationshipTypeService.deleteRelationshipType(relationshipType2);
+    }
+
+    @Test
+    void getRelationshipBetweenPerson1Person2LIST() {
+        PersonService personService = new PersonService();
+        Person person1 = new Person("Test 1", Date.valueOf("1999-12-12"));
+        Person person2 = new Person("Test 2", Date.valueOf("1999-12-12"));
+        personService.addPerson(person1);
+        personService.addPerson(person2);
+
+        RoleTypeService roleTypeService = new RoleTypeService();
+        RoleType roleType1 = new RoleType("Test 1");
+        RoleType roleType2 = new RoleType("Test 2");
+        roleTypeService.addRoleType(roleType1);
+        roleTypeService.addRoleType(roleType2);
+
+        RelationshipTypeService relationshipTypeService = new RelationshipTypeService();
+        RelationshipType relationshipType1 = new RelationshipType("Test 1");
+        RelationshipType relationshipType2 = new RelationshipType("Test 2");
+        relationshipTypeService.addRelationshipType(relationshipType1);
+        relationshipTypeService.addRelationshipType(relationshipType2);
+
+        RelationshipService relationshipService = new RelationshipService();
+        Relationship expected_relationship1 = new Relationship(person1, person2,roleType1,roleType2,
+                relationshipType1,relationshipType2);
+        Relationship expected_relationship2 = new Relationship(person1, person2,roleType1,roleType2,
+                relationshipType1,relationshipType2);
+        relationshipService.addRelationship(expected_relationship1);
+
+        List<Relationship> actual_relationships = relationshipService.getRelationshipBetweenPerson1Person2(person1,person2);
+        for (Relationship actual_relationship: actual_relationships) {
+            assertEquals(expected_relationship1.getId(), actual_relationship.getId());
+            assertEquals(expected_relationship1.getType_relationship_1().getId(), actual_relationship.getType_relationship_1().getId());
+            assertEquals(expected_relationship1.getType_relationship_2().getId(), actual_relationship.getType_relationship_2().getId());
+            assertEquals(expected_relationship1.getRole_1().getId(), actual_relationship.getRole_1().getId());
+            assertEquals(expected_relationship1.getRole_2().getId(), actual_relationship.getRole_2().getId());
+            assertEquals(expected_relationship1.getPerson_1().getId(), actual_relationship.getPerson_1().getId());
+            assertEquals(expected_relationship1.getPerson_2().getId(), expected_relationship1.getPerson_2().getId());
+        }
+        relationshipService.deleteRelationship(expected_relationship1);
+        relationshipService.deleteRelationship(expected_relationship2);
+        personService.deletePerson(person1);
+        personService.deletePerson(person2);
+        roleTypeService.deleteRoleType(roleType1);
+        roleTypeService.deleteRoleType(roleType2);
+        relationshipTypeService.deleteRelationshipType(relationshipType1);
+        relationshipTypeService.deleteRelationshipType(relationshipType2);
+    }
+
 }
