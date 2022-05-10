@@ -219,7 +219,6 @@ class RelationshipServiceTest {
     void getRelationshipBetweenPerson1Person2NULL() {
 
         RelationshipService relationshipService = new RelationshipService();
-        PersonService personService = new PersonService();
         Person person1 = new Person("Test 1", Date.valueOf("1999-12-12"));
         person1.setId(-1L);
         Person person2 = new Person("Test 2", Date.valueOf("1999-12-12"));
