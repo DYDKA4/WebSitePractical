@@ -10,18 +10,18 @@ public class ControllerMain {
 //    @RequestMapping(value = { "/", "/index"})
 //    public ModelAndView index() {
 //        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.setViewName("main_page.html");
+//        modelAndView.setViewName("index.html");
 //        return modelAndView;
 //    }
 
-    @GetMapping("/main_page")
+    @GetMapping("/")
     public String index(Model model) {
-        return "main_page";
+        return "index";
     }
 
     @GetMapping("/error")
     public String error(Model model){
-        return "main_page";
+        return "index";
     }
 
 //    @RequestMapping(value = "/allPersons" )
