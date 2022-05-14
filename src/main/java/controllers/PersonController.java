@@ -32,10 +32,6 @@ public class PersonController {
 
     @GetMapping("/persons")
     public String peopleListPage(Model model) {
-//        List<Person> persons = personService.getPersonAll();
-//        model.addAttribute("persons", persons);
-//        model.addAttribute("personService", personService);
-//        model.addAttribute("relationshipService", relationshipService);
         return "persons";
     }
 
@@ -43,15 +39,11 @@ public class PersonController {
     public String personPage(@RequestParam(name = "personId") Long personId, Model model) {
         Person person = personService.getPersonById(personId);
 
-        if (person == null) {
-            model.addAttribute("error_msg", "В базе нет человека с ID = " + personId);
-            return "errorPage";
-        }
+//        if (person == null) {
+//            model.addAttribute("error_msg", "В базе нет человека с ID = " + personId);
+//            return "errorPage";
+//        }
 
-        model.addAttribute("person", person);
-        model.addAttribute("personService", personService);
-        model.addAttribute("residenceService", residenceService);
-        model.addAttribute("relationshipService", relationshipService);
         return "person";
     }
 }
