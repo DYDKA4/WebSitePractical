@@ -7,21 +7,15 @@ import org.springframework.ui.Model;
 @Controller
 public class ControllerMain {
 
-//    @RequestMapping(value = { "/", "/index"})
-//    public ModelAndView index() {
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.setViewName("index.html");
-//        return modelAndView;
-//    }
 
-    @GetMapping("/")
-    public String index(Model model) {
+    @GetMapping(value = "/")
+    public String MainPage(Model model) {
         return "index";
     }
 
     @GetMapping("/error")
     public String error(Model model){
-        return "index";
+        return "error";
     }
 
 //    @RequestMapping(value = "/allPersons" )
