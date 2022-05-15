@@ -18,10 +18,6 @@ public class ControllerMain {
 //    public String error(Model model){
 //        return "error";
 //    }
-    @GetMapping("/persons")
-    public String persons(Model model){
-        return "persons";
-    }
 
 //    @RequestMapping(value = "/allPersons" )
 //    public String allPersons() {
