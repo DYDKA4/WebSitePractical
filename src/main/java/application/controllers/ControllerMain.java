@@ -1,4 +1,4 @@
-package controllers;
+package application.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,15 +17,5 @@ public class ControllerMain {
 //    @GetMapping("/error")
 //    public String error(Model model){
 //        return "error";
-//    }
-
-//    @RequestMapping(value = "/allPersons" )
-//    public String allPersons() {
-//        return "persons";
-//    }
-//
-//    @RequestMapping(value = "/generateTree")
-//    public String generateTree() {
-//        return "generateTree";
 //    }
 }

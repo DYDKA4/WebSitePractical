@@ -1,6 +1,7 @@
 package services;
 
-import Entities.Person;
+import application.Entities.Person;
+import application.services.PersonService;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Date;

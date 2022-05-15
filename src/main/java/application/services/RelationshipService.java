@@ -1,8 +1,8 @@
-package services;
+package application.services;
 
-import DAO.RelationshipDAO;
-import Entities.Person;
-import Entities.Relationship;
+import application.DAO.RelationshipDAO;
+import application.Entities.Person;
+import application.Entities.Relationship;
 
 import java.util.List;
 

@@ -1,9 +1,8 @@
-package DAO;
+package application.DAO;
 
-import Entities.RelationshipType;
-import Entities.RoleType;
+import application.Entities.RoleType;
+import application.util.HibernateUtil;
 import org.hibernate.Session;
-import util.HibernateUtil;
 
 public class RoleTypeDAO {
 

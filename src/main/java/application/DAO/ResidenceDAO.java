@@ -1,9 +1,9 @@
-package DAO;
+package application.DAO;
 
-import Entities.Residence;
+import application.Entities.Residence;
+import application.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
-import util.HibernateUtil;
 
 import java.util.List;
 

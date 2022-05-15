@@ -1,7 +1,7 @@
 package services;
 
-import Entities.RelationshipType;
-import Entities.RoleType;
+import application.Entities.RoleType;
+import application.services.RoleTypeService;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

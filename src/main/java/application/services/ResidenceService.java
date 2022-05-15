@@ -1,8 +1,8 @@
-package services;
+package application.services;
 
 
-import DAO.ResidenceDAO;
-import Entities.Residence;
+import application.DAO.ResidenceDAO;
+import application.Entities.Residence;
 
 import java.util.List;
 

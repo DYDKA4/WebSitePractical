@@ -1,10 +1,10 @@
-package DAO;
+package application.DAO;
 
-import Entities.Person;
+import application.Entities.Person;
+import application.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
-import util.HibernateUtil;
-import org.hibernate.*;
+
 import java.util.List;
 
 public class PersonDAO {

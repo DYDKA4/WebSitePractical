@@ -1,6 +1,7 @@
 package services;
 
-import Entities.RelationshipType;
+import application.Entities.RelationshipType;
+import application.services.RelationshipTypeService;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,9 +1,8 @@
-package DAO;
+package application.DAO;
 
-import Entities.Person;
-import Entities.RelationshipType;
+import application.Entities.RelationshipType;
+import application.util.HibernateUtil;
 import org.hibernate.Session;
-import util.HibernateUtil;
 
 public class RelationshipTypeDAO {
 

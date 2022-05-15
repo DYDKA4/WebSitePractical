@@ -1,7 +1,7 @@
-package services;
+package application.services;
 
-import DAO.RelationshipTypeDAO;
-import Entities.RelationshipType;
+import application.DAO.RelationshipTypeDAO;
+import application.Entities.RelationshipType;
 
 public class RelationshipTypeService {
     private RelationshipTypeDAO relationshipTypeDAO = new RelationshipTypeDAO();

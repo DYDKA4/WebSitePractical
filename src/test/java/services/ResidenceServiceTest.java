@@ -1,7 +1,9 @@
 package services;
 
-import Entities.Person;
-import Entities.Residence;
+import application.Entities.Person;
+import application.Entities.Residence;
+import application.services.PersonService;
+import application.services.ResidenceService;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Date;

@@ -1,6 +1,6 @@
-package configs;
-import org.springframework.beans.factory.annotation.Autowired;
+package application.configs;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -38,13 +38,13 @@ public class WebConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    @Autowired
-    public ThymeleafViewResolver viewResolver(SpringTemplateEngine templateEngine){
-        ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
-        viewResolver.setTemplateEngine(templateEngine);
-        viewResolver.setOrder(1);
+    public ViewResolver viewResolver() {
+
+        var viewResolver = new ThymeleafViewResolver();
+
+        viewResolver.setTemplateEngine(templateEngine());
         viewResolver.setCharacterEncoding("UTF-8");
-        viewResolver.setViewNames(new String[] {".html", ".xhtml"});
+
         return viewResolver;
     }
 

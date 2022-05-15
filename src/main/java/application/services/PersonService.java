@@ -1,7 +1,7 @@
-package services;
+package application.services;
 
-import DAO.PersonDAO;
-import Entities.Person;
+import application.DAO.PersonDAO;
+import application.Entities.Person;
 
 import java.util.List;
 

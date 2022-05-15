@@ -1,10 +1,9 @@
-package DAO;
+package application.DAO;
 
-import Entities.Person;
-import Entities.Relationship;
-import lombok.NonNull;
+import application.Entities.Person;
+import application.Entities.Relationship;
+import application.util.HibernateUtil;
 import org.hibernate.Session;
-import util.HibernateUtil;
 import org.hibernate.query.Query;
 
 import java.util.List;
@@ -52,7 +51,7 @@ public class RelationshipDAO {
         return query.getResultList();
     }
 
-    public List<Relationship> getRelationshipBetweenPerson1Person2(Person person1,Person person2){
+    public List<Relationship> getRelationshipBetweenPerson1Person2(Person person1, Person person2){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Query<Relationship> query = session.createQuery("FROM Relationship WHERE id_person_person_2 = :gotID2" +
                         " AND id_person_person_1 = :gotID1", Relationship.class);

@@ -1,7 +1,7 @@
-package services;
+package application.services;
 
-import DAO.RoleTypeDAO;
-import Entities.RoleType;
+import application.DAO.RoleTypeDAO;
+import application.Entities.RoleType;
 
 public class RoleTypeService {
     private RoleTypeDAO roleTypeDAO = new RoleTypeDAO();

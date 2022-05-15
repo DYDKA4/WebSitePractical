@@ -1,9 +1,13 @@
 package services;
 
-import Entities.Person;
-import Entities.Relationship;
-import Entities.RelationshipType;
-import Entities.RoleType;
+import application.Entities.Person;
+import application.Entities.Relationship;
+import application.Entities.RelationshipType;
+import application.Entities.RoleType;
+import application.services.PersonService;
+import application.services.RelationshipService;
+import application.services.RelationshipTypeService;
+import application.services.RoleTypeService;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Date;

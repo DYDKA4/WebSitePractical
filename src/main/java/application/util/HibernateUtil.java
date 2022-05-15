@@ -1,7 +1,7 @@
 
-package util;
+package application.util;
 
-import Entities.*;
+import application.Entities.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 

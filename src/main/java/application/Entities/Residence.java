@@ -1,4 +1,4 @@
-package Entities;
+package application.Entities;
 
 import lombok.Getter;
 import lombok.NonNull;
