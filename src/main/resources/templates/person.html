@@ -43,7 +43,7 @@
                 <input type="hidden" name="personId" th:value="${person.getId()}"/>
                 <button id="relativesButton" type="submit" class="btn btn-secondary">Отобразить ближайших родственников</button>
             </form>
-            <form method="post" action="/removePerson">
+            <form method="post" action="/deletePerson">
                 <input type="hidden" name="personId" th:value="${person.getId()}"/>
                 <button id="deleteButton" type="submit" class="btn btn-secondary">Удалить человека из базы</button>
             </form>

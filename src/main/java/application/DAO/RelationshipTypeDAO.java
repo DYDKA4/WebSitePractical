@@ -1,10 +1,13 @@
 package application.DAO;
 
+import application.Entities.Person;
 import application.Entities.Relationship;
 import application.Entities.RelationshipType;
 import application.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+
+import java.util.List;
 
 public class RelationshipTypeDAO {
 
@@ -48,5 +51,14 @@ public class RelationshipTypeDAO {
             return null;
         }
         return query.getResultList().get(0);
+    }
+
+    public List<RelationshipType> getRelationshipTypeAll() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query<RelationshipType> query = session.createQuery("FROM RelationshipType", RelationshipType.class);
+        if (query.getResultList().size() == 0) {
+            return null;
+        }
+        return query.getResultList();
     }
 }

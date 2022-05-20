@@ -36,6 +36,14 @@ public class Person {
 //    @JoinColumn(name = "id_person_person")
 //    private Set<Residence> residences;
 
+    public Person(@NonNull long id,@NonNull String name, @NonNull Date born, Date death) {
+        this.id = id;
+        this.name = name;
+        this.born = born;
+        this.death = death;
+    }
+
+
     public Person(@NonNull String name, @NonNull Date born, Date death) {
         this.name = name;
         this.born = born;

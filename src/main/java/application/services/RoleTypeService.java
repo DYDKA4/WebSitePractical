@@ -2,6 +2,7 @@ package application.services;
 
 import application.DAO.RoleTypeDAO;
 import application.Entities.RoleType;
+import java.util.List;
 
 public class RoleTypeService {
     private RoleTypeDAO roleTypeDAO = new RoleTypeDAO();
@@ -20,5 +21,11 @@ public class RoleTypeService {
     }
     public RoleType getRoleTypeById(Long id){
         return roleTypeDAO.getRoleTypeById(id);
+    }
+    public RoleType getRoleTypeByName (String role_name){
+        return roleTypeDAO.getRoleTypeByName(role_name);
+    }
+    public List<RoleType> getRoleTypeAll (){
+        return roleTypeDAO.getRoleTypeAll();
     }
 }

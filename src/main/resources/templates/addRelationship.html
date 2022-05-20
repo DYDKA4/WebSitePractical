@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Изменение резиденции</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style>
+        .indent {
+            margin-left: 30px;
+            margin-right: 30px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="general :: page-header"> </div>
+
+
+<div class="container mt-3" style="max-width: 400px;">
+    <form method="post" action="/saveRelationship">
+        <input type="hidden" name="id">
+        <input type="hidden" name="id_person_1" th:value="${person.getId()}">
+        <div class="form-group">
+            <label>Назначение связи к</label>
+            <div class="input-group">
+                <select class="custom-select" name="id_person_2">
+                    <ul th:each="person: ${persons}">
+                        <li>
+                            <option th:value="${person.getId()}" th:text="${person.getName()}"></option>
+                        </li>
+                    </ul>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Кем является к кому идёт связь </label>
+            <div class="input-group">
+                <select class="custom-select" name="relationshipTypes_2">
+                    <ul th:each="relationshipType: ${relationshipTypes}">
+                        <li>
+                            <option th:value="${relationshipType.getId()}" th:text="${relationshipType.getName()}"></option>
+                        </li>
+                    </ul>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Какой тип связи к кому идёт связь </label>
+            <div class="input-group">
+                <select class="custom-select" name="roleType_2">
+                    <ul th:each="roleType: ${roleTypes}">
+                        <li>
+                            <option th:value="${roleType.getId()}" th:text="${roleType.getName()}"></option>
+                        </li>
+                    </ul>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Кем является к кому идёт связь </label>
+            <div class="input-group">
+                <select class="custom-select" name="relationshipTypes_1">
+                    <ul th:each="relationshipType: ${relationshipTypes}">
+                        <li>
+                            <option th:value="${relationshipType.getId()}" th:text="${relationshipType.getName()}"></option>
+                        </li>
+                    </ul>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Какой тип связи от кого идёт связь </label>
+            <div class="input-group">
+                <select class="custom-select" name="roleType_1">
+                    <ul th:each="roleType: ${roleTypes}">
+                        <li>
+                            <option th:value="${roleType.getId()}" th:text="${roleType.getName()}"></option>
+                        </li>
+                    </ul>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">Сохранить</button>
+    </form>
+
+</div>
+<div th:replace="general :: site-footer"></div>
+<div th:replace="general :: site-script"></div>
+
+</body>
+</html>

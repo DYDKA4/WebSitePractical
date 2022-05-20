@@ -17,6 +17,10 @@
 <body>
 <div th:replace="general :: page-header"> </div>
 <h1> <center>Ближайшие родственники</center></h1>
+<form  style="margin-left: 30px" method="get" action="/addRelationship">
+    <input type="hidden" name="personId" th:value="${person.getId()}"/>
+    <button id="addPersonButton" type="submit" class="btn btn-primary">Добавить взаимоотношения</button>
+</form>
 <div class="indent">
     <div id="personInfo">
         <h4 th:text="${person.getName()}"></h4>
@@ -54,6 +58,11 @@
         <p> Дочери:&nbsp <span th:if="${daughters == null}">информация отсутствует.</span>
             <a th:each="daughter, iter: ${daughters}" th:href="'/person?personId=' + ${daughter.getPerson_2().getId()}">
                 <span th:text="${daughter.getPerson_2().getName()} + ${!iter.last ? ',' : ''}"></span>
+            </a>
+        </p>
+        <p> Супруги:&nbsp <span th:if="${spouses == null}">информация отсутствует.</span>
+            <a th:each="spouse, iter: ${spouses}" th:href="'/person?personId=' + ${spouse.getPerson_2().getId()}">
+                <span th:text="${spouse.getPerson_2().getName()} + ${!iter.last ? ',' : ''}"></span>
             </a>
         </p>
 

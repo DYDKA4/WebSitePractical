@@ -13,8 +13,5 @@ public class ControllerMain {
         return "main_page";
     }
 
-//    @GetMapping("/error")
-//    public String error(Model model){
-//        return "error";
 //    }
 }

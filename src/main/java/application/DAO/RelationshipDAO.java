@@ -62,6 +62,18 @@ public class RelationshipDAO {
         return query.getResultList();
     }
 
+    public List<Relationship> getIdOfPersonByRoleTypeId(Long id, Long role_id){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query<Relationship> query = session.createQuery("FROM Relationship WHERE id_person_person_1 = :gotID " +
+                "AND id_role_role_1 = :gotID2", Relationship.class);
+        query.setParameter("gotID", id);
+        query.setParameter("gotID2", role_id);
+        if (query.getResultList().size() == 0){
+            return null;
+        }
+        return query.getResultList();
+    }
+
     public List<Relationship> getIdOfPersonByRoleId(Long id, Long role_id){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Query<Relationship> query = session.createQuery("FROM Relationship WHERE id_person_person_1 = :gotID " +

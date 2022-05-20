@@ -3,6 +3,8 @@ package application.services;
 import application.DAO.RelationshipTypeDAO;
 import application.Entities.RelationshipType;
 
+import java.util.List;
+
 public class RelationshipTypeService {
     private RelationshipTypeDAO relationshipTypeDAO = new RelationshipTypeDAO();
 
@@ -22,4 +24,5 @@ public class RelationshipTypeService {
         return relationshipTypeDAO.getRelationshipTypeById(id);
     }
     public RelationshipType getRelationshipTypeByName(String name){return relationshipTypeDAO.getRelationshipTypeByName(name);}
+    public List<RelationshipType> getRelationshipTypeAll(){return  relationshipTypeDAO.getRelationshipTypeAll();}
 }

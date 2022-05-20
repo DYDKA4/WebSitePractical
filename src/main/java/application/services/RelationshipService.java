@@ -34,4 +34,7 @@ public class RelationshipService {
     public List<Relationship> getIdOfPersonByRoleId(Long id, long role_id){
         return relationshipDAO.getIdOfPersonByRoleId(id,role_id);
     }
+    public List<Relationship> getIdOfPersonByRoleTypeId(Long id, long role_id){
+        return relationshipDAO.getIdOfPersonByRoleTypeId(id,role_id);
+    }
 }
