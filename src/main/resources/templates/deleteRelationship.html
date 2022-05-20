@@ -17,25 +17,26 @@
 <div th:replace="general :: page-header"> </div>
 
 
-
 <div class="container mt-3" style="max-width: 400px;">
-    <form method="post" action="/savePerson">
-        <input type="hidden" name="id">
+    <form method="post" action="/deleteRelationship">
+        <input type="hidden" name="id_person_1" th:value="${person.getId()}">
+        <div class="form-group">
+            <label>Какую связь удалить</label>
+            <div class="input-group">
+                <select class="custom-select" name="id_relationship">
+                    <ul th:each="relationship: ${relationships}">
+                        <li>
+                            <option th:value="${relationship.getId()}" th:text="${relationship.getPerson_2().getName()}"></option>
+                        </li>
+                    </ul>
+                </select>
+            </div>
+        </div>
 
-        <div class="form-group">
-            <label>ФИО</label>
-            <input class="form-control" name="FullName">
-        </div>
-        <div class="form-group">
-            <label>Дата рождения</label>
-            <input class="form-control" name="birthday">
-        </div>
-        <div class="form-group">
-            <label>Дата смерти (продублируйте дату рождения если человек жив)</label>
-            <input class="form-control" name="deathday">
-        </div>
 
-        <button type="delete" class="btn btn-success">Сохранить</button>
+
+
+        <button type="submit" class="btn btn-danger">Удалить</button>
     </form>
 
 </div>

@@ -93,16 +93,7 @@ public class RelationshipDAO {
         query.setParameter("gotID1", person1.getId());
         query.setParameter("gotID2", person2.getId());
         if (query.getResultList().size() == 0) {
-            query = session.createQuery("FROM Relationship WHERE id_person_person_2 = :gotID2" +
-                    " AND id_person_person_1 = :gotID1", Relationship.class);
-            query.setParameter("gotID1", person2.getId());
-            query.setParameter("gotID2", person1.getId());
-            if (query.getResultList().size() == 0) {
                 return null;
-            }
-            else {
-                return query.getResultList();
-            }
         }
         return query.getResultList();
     }

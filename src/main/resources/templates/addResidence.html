@@ -19,20 +19,20 @@
 
 
 <div class="container mt-3" style="max-width: 400px;">
-    <form method="post" action="/savePerson">
-        <input type="hidden" name="id">
+    <form method="post" action="/saveResidence">
+        <input type="hidden" name="personId" th:value="${personId}">
 
         <div class="form-group">
-            <label>ФИО</label>
-            <input class="form-control" name="FullName">
+            <label>Адрес</label>
+            <input class="form-control" name="address">
         </div>
         <div class="form-group">
-            <label>Дата рождения</label>
-            <input class="form-control" name="birthday">
+            <label>Дата заселения</label>
+            <input class="form-control" name="check_in">
         </div>
         <div class="form-group">
-            <label>Дата смерти (продублируйте дату рождения если человек жив)</label>
-            <input class="form-control" name="deathday">
+            <label>Дата выселения (введите неизвестно если дата выселения неизвестна)</label>
+            <input class="form-control" name="check_out">
         </div>
 
         <button type="delete" class="btn btn-success">Сохранить</button>

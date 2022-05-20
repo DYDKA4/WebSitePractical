@@ -67,5 +67,36 @@ public class RelationshipController {
         return personController.relativesPage(person1.getId(),model);
     }
 
+    @GetMapping("/deleteRelationship")
+    public String deleteRelationship(
+            @RequestParam(name = "personId") Long id,
+            Model model) {
+        List<Relationship> relationships = relationshipService.getRelationshipByPerson2(id);
+        if(relationships == null){
+            return personController.relativesPage(id,model);
+        }
+        model.addAttribute("person",personService.getPersonById(id));
+        model.addAttribute("relationships",relationships);
+        return "/deleteRelationship";
+    }
+
+    @PostMapping("/deleteRelationship")
+    public String postDeleteRelationship(
+            @RequestParam(name = "id_person_1") Long id,
+            @RequestParam(name = "id_relationship") Long id_relationship,
+            Model model) {
+        Person person1 = personService.getPersonById(id);
+        Person person2 = relationshipService.getRelationshipById(id_relationship).getPerson_2();
+        relationshipService.deleteRelationship(relationshipService.getRelationshipById(id_relationship));
+        List<Relationship> relationships = relationshipService.getRelationshipBetweenPerson1Person2(person2,person1);
+        if(relationships!=null){
+            relationshipService.deleteRelationship(relationships.get(0));
+        }
+        relationships = relationshipService.getRelationshipBetweenPerson1Person2(person1,person2);
+        if(relationships!=null){
+            relationshipService.deleteRelationship(relationships.get(0));
+        }
+        return personController.relativesPage(id,model);
+    }
 
 }

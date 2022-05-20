@@ -37,6 +37,16 @@ public class Residence {
     @Column(name = "check_out_date")
     private Date check_out;
 
+
+    public Residence(@NonNull long id, @NonNull Person person, @NonNull String address, @NonNull Date check_in, Date check_out){
+
+        this.id = id;
+        this.person = person;
+        this.address = address;
+        this.check_in = check_in;
+        this.check_out = check_out;
+    }
+
     public Residence(@NonNull Person person, @NonNull String address, @NonNull Date check_in, Date check_out){
 
         this.person = person;

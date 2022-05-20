@@ -17,10 +17,6 @@
 <body>
 <div th:replace="general :: page-header"> </div>
 <h1> <center>Ближайшие родственники</center></h1>
-<form  style="margin-left: 30px" method="get" action="/addRelationship">
-    <input type="hidden" name="personId" th:value="${person.getId()}"/>
-    <button id="addPersonButton" type="submit" class="btn btn-primary">Добавить взаимоотношения</button>
-</form>
 <div class="indent">
     <div id="personInfo">
         <h4 th:text="${person.getName()}"></h4>
@@ -68,6 +64,19 @@
 
     </div>
 
+
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+            <form style="margin-right: 30px" method="get" action="/addRelationship">
+                <input type="hidden" name="personId" th:value="${person.getId()}"/>
+                <button id="addButton" type="submit" class="btn btn-secondary">Добавить взаимоотношения</button>
+            </form>
+            <form method="get" action="/deleteRelationship">
+                <input type="hidden" name="personId" th:value="${person.getId()}"/>
+                <button id="deleteButton" type="submit" class="btn btn-secondary">Удалить взаимоотношения</button>
+            </form>
+        </div>
+    </div>
 
 </div>
 <div th:replace="general :: site-footer"></div>

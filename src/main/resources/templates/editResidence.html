@@ -15,30 +15,30 @@
 </head>
 <body>
 <div th:replace="general :: page-header"> </div>
-
-
-
 <div class="container mt-3" style="max-width: 400px;">
-    <form method="post" action="/savePerson">
-        <input type="hidden" name="id">
+    <form method="post" action="/saveEditResidence">
+
+        <input type="hidden" name="residenceId" th:value="${residence.getId()}">
+        <input type="hidden" name="personId" th:value="${residence.getPerson().getId()}">
 
         <div class="form-group">
-            <label>ФИО</label>
-            <input class="form-control" name="FullName">
+            <label>Адрес</label>
+            <input class="form-control" name="address" th:value="${residence.getAddress()}">
         </div>
         <div class="form-group">
-            <label>Дата рождения</label>
-            <input class="form-control" name="birthday">
+            <label>Дата заселения</label>
+            <input class="form-control" name="check_in" th:value="${residence.getCheck_in()}">
         </div>
         <div class="form-group">
-            <label>Дата смерти (продублируйте дату рождения если человек жив)</label>
-            <input class="form-control" name="deathday">
+            <label>Дата выселения(введите неизвестно если дата выселения неизвестна)</label>
+            <input class="form-control" name="check_out" th:value="${residence.getCheck_out()}">
         </div>
-
-        <button type="delete" class="btn btn-success">Сохранить</button>
+        <button type="submit" class="btn btn-success">Сохранить</button>
     </form>
 
 </div>
+
+
 <div th:replace="general :: site-footer"></div>
 <div th:replace="general :: site-script"></div>
 

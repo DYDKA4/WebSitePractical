@@ -25,7 +25,7 @@
         <p th:if="${person.getDeath() == null}" th:text="'Человек жив по наши дни.'"></p>
 
         <p> Места проживания:&nbsp <span th:if="${residenceService.getResidenceByPerson(person.getId()) == null}">информация отсутствует.</span>
-            <a th:each="place, iter: ${residenceService.getResidenceByPerson(person.getId())}" th:href="'/place?placeId=' + ${place.getId()}">
+            <a th:each="place, iter: ${residenceService.getResidenceByPerson(person.getId())}" th:href="'/residence?placeId=' + ${place.getId()}">
                 <span th:text="${place.getAddress()} + ${!iter.last ? ',' : ''}"></span>
             </a>
         </p>
@@ -43,9 +43,13 @@
                 <input type="hidden" name="personId" th:value="${person.getId()}"/>
                 <button id="relativesButton" type="submit" class="btn btn-secondary">Отобразить ближайших родственников</button>
             </form>
-            <form method="post" action="/deletePerson">
+            <form style="margin-right: 30px" method="post" action="/deletePerson">
                 <input type="hidden" name="personId" th:value="${person.getId()}"/>
                 <button id="deleteButton" type="submit" class="btn btn-secondary">Удалить человека из базы</button>
+            </form>
+            <form style="margin-right: 30px" method="get" action="/addResidence">
+                <input type="hidden" name="personId" th:value="${person.getId()}"/>
+                <button id="addResidence" type="submit" class="btn btn-secondary">Добавить резиденцию</button>
             </form>
         </div>
     </div>
