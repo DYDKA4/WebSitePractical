@@ -3,6 +3,7 @@ package application.DAO;
 import application.Entities.Person;
 import application.Entities.Relationship;
 import application.util.HibernateUtil;
+import lombok.NonNull;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
@@ -43,9 +44,31 @@ public class RelationshipDAO {
 
     public List<Relationship> getRelationshipByPerson2(Long id){
         Session session = HibernateUtil.getSessionFactory().openSession();
+        Query<Relationship> query = session.createQuery("FROM Relationship WHERE id_person_person_1 = :gotID",
+                Relationship.class).setParameter("gotID", id);
+        if (query.getResultList().size() == 0) {
+            return null;
+        }
+        return query.getResultList();
+    }
+
+    public List<Relationship> getRoleByPerson2(Long id){
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Query<Relationship> query = session.createQuery("FROM Relationship WHERE id_person_person_2 = :gotID",
                 Relationship.class).setParameter("gotID", id);
         if (query.getResultList().size() == 0) {
+            return null;
+        }
+        return query.getResultList();
+    }
+
+    public List<Relationship> getIdOfPersonByRoleId(Long id, Long role_id){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query<Relationship> query = session.createQuery("FROM Relationship WHERE id_person_person_1 = :gotID " +
+                "AND id_relationship_type_2 = :gotID2", Relationship.class);
+        query.setParameter("gotID", id);
+        query.setParameter("gotID2", role_id);
+        if (query.getResultList().size() == 0){
             return null;
         }
         return query.getResultList();

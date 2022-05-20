@@ -8,6 +8,7 @@ import java.util.List;
 
 public class RelationshipService {
     private RelationshipDAO relationshipDAO = new RelationshipDAO();
+    private final PersonService personService = new PersonService();
 
     public RelationshipService(){
 
@@ -29,5 +30,8 @@ public class RelationshipService {
     }
     public List<Relationship> getRelationshipBetweenPerson1Person2(Person person1, Person person2){
         return relationshipDAO.getRelationshipBetweenPerson1Person2(person1, person2);
+    }
+    public List<Relationship> getIdOfPersonByRoleId(Long id, long role_id){
+        return relationshipDAO.getIdOfPersonByRoleId(id,role_id);
     }
 }

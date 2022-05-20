@@ -22,4 +22,5 @@ public class ResidenceService {
     public List<Residence> getResidenceByAddress(String address){
         return residenceDAO.getResidenceByAddress(address);
     }
+    public List<Residence> getResidenceByPerson(long person_id){return residenceDAO.getResidenceByPerson(person_id);}
 }

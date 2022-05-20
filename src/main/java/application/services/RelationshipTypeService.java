@@ -21,4 +21,5 @@ public class RelationshipTypeService {
     public RelationshipType getRelationshipTypeById(Long id){
         return relationshipTypeDAO.getRelationshipTypeById(id);
     }
+    public RelationshipType getRelationshipTypeByName(String name){return relationshipTypeDAO.getRelationshipTypeByName(name);}
 }

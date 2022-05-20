@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style>
+        .indent {
+            margin-left: 30px;
+            margin-right: 30px;
+            margin-top: 20px;
+        }
+    </style>
+    <title></title>
+</head>
+
+<body>
+<div th:replace="general :: page-header"> </div>
+<h1> <center>Ближайшие родственники</center></h1>
+<div class="indent">
+    <div id="personInfo">
+        <h4 th:text="${person.getName()}"></h4>
+        <p th:if="${relationshipService.getIdOfPersonByRoleId(person.getId(),mother.getId())} != null">
+            <a th:href="'/person?personId=' + ${relationshipService.getIdOfPersonByRoleId(person.getId(),mother.getId()).get(0).getPerson_2().getId()}">
+                Мать: <span th:text="${relationshipService.getIdOfPersonByRoleId(person.getId(),mother.getId()).get(0).getPerson_2().getName()}"> </span>
+            </a>
+        </p>
+        <p th:if="${relationshipService.getIdOfPersonByRoleId(person.getId(),mother.getId())} == null">
+            Мать: информация отсутствует.
+        </p>
+        <p th:if="${relationshipService.getIdOfPersonByRoleId(person.getId(),father.getId())} != null">
+            <a th:href="'/person?personId=' + ${relationshipService.getIdOfPersonByRoleId(person.getId(),father.getId()).get(0).getPerson_2().getId()}">
+                Отец: <span th:text="${relationshipService.getIdOfPersonByRoleId(person.getId(),father.getId()).get(0).getPerson_2().getName()}"> </span>
+            </a>
+        </p>
+        <p th:if="${relationshipService.getIdOfPersonByRoleId(person.getId(),mother.getId())} == null">
+            Отец: информация отсутствует.
+        </p>
+        <p> Братья:&nbsp <span th:if="${brothers == null}">информация отсутствует.</span>
+            <a th:each="brother, iter: ${brothers}" th:href="'/person?personId=' + ${brother.getPerson_2().getId()}">
+                <span th:text="${brother.getPerson_2().getName()} + ${!iter.last ? ',' : ''}"></span>
+            </a>
+        </p>
+        <p> Сестры:&nbsp <span th:if="${sisters == null}">информация отсутствует.</span>
+            <a th:each="sister, iter: ${sisters}" th:href="'/person?personId=' + ${sister.getPerson_2().getId()}">
+                <span th:text="${sister.getPerson_2().getName()} + ${!iter.last ? ',' : ''}"></span>
+            </a>
+        </p>
+        <p> Cыновья:&nbsp <span th:if="${sons == null}">информация отсутствует.</span>
+            <a th:each="son, iter: ${sons}" th:href="'/person?personId=' + ${son.getPerson_2().getId()}">
+                <span th:text="${son.getPerson_2().getName()} + ${!iter.last ? ',' : ''}"></span>
+            </a>
+        </p>
+        <p> Дочери:&nbsp <span th:if="${daughters == null}">информация отсутствует.</span>
+            <a th:each="daughter, iter: ${daughters}" th:href="'/person?personId=' + ${daughter.getPerson_2().getId()}">
+                <span th:text="${daughter.getPerson_2().getName()} + ${!iter.last ? ',' : ''}"></span>
+            </a>
+        </p>
+
+    </div>
+
+
+</div>
+<div th:replace="general :: site-footer"></div>
+<div th:replace="general :: site-script"></div>
+
+</body>
+</html>

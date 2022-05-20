@@ -1,7 +1,6 @@
 package application.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -11,7 +10,7 @@ public class ControllerMain {
 
     @RequestMapping(value = "/")
     public String MainPage(Model model) {
-        return "index";
+        return "main_page";
     }
 
 //    @GetMapping("/error")

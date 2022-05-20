@@ -16,8 +16,42 @@
 
 <body>
 <div th:replace="general :: page-header"> </div>
-<h1>Информация о человеке</h1>
+<h1><center>Информация о человеке</center></h1>
+<div class="indent">
+    <div id="personInfo">
+        <h4 th:text="${person.getName()}"></h4>
+        <p th:if="${person.getBorn() != null}" th:text="'Дата рождения: ' + ${person.getBorn()}"></p>
+        <p th:if="${person.getDeath() != null}" th:text="'Дата смерти: ' + ${person.getDeath()}"></p>
+        <p th:if="${person.getDeath() == null}" th:text="'Человек жив по наши дни.'"></p>
 
+        <p> Места проживания:&nbsp <span th:if="${residenceService.getResidenceByPerson(person.getId()) == null}">информация отсутствует.</span>
+            <a th:each="place, iter: ${residenceService.getResidenceByPerson(person.getId())}" th:href="'/place?placeId=' + ${place.getId()}">
+                <span th:text="${place.getAddress()} + ${!iter.last ? ',' : ''}"></span>
+            </a>
+        </p>
+
+    </div>
+
+    <!--edit delete order button group-->
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+            <form style="margin-right: 30px" method="get" action="/editPerson">
+                <input type="hidden" name="personId" th:value="${person.getId()}"/>
+                <button id="editButton" type="submit" class="btn btn-secondary">Редактировать информацию о человеке</button>
+            </form>
+            <form style="margin-right: 30px" method="get" action="/relatives">
+                <input type="hidden" name="personId" th:value="${person.getId()}"/>
+                <button id="relativesButton" type="submit" class="btn btn-secondary">Отобразить ближайших родственников</button>
+            </form>
+            <form method="post" action="/removePerson">
+                <input type="hidden" name="personId" th:value="${person.getId()}"/>
+                <button id="deleteButton" type="submit" class="btn btn-secondary">Удалить человека из базы</button>
+            </form>
+        </div>
+    </div>
+    <!--end of button group-->
+
+</div>
 <div th:replace="general :: site-footer"></div>
 <div th:replace="general :: site-script"></div>
 

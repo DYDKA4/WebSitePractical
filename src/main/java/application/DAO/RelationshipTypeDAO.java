@@ -1,8 +1,10 @@
 package application.DAO;
 
+import application.Entities.Relationship;
 import application.Entities.RelationshipType;
 import application.util.HibernateUtil;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 public class RelationshipTypeDAO {
 
@@ -35,5 +37,16 @@ public class RelationshipTypeDAO {
         RelationshipType entity = (RelationshipType) session.get(RelationshipType.class, id);
         session.close();
         return entity;
+    }
+
+    public RelationshipType getRelationshipTypeByName(String role_name) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query<RelationshipType> query = session.createQuery("FROM RelationshipType"+
+                " WHERE name_of_relationship = :gotName", RelationshipType.class);
+        query.setParameter("gotName", role_name);
+        if (query.getResultList().size() == 0){
+            return null;
+        }
+        return query.getResultList().get(0);
     }
 }
