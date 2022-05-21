@@ -1,5 +1,6 @@
 package application.DAO;
 
+import application.Entities.Person;
 import application.Entities.Residence;
 import application.util.HibernateUtil;
 import org.hibernate.Session;
@@ -53,6 +54,14 @@ public class ResidenceDAO {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Query<Residence> query = session.createQuery("FROM Residence WHERE id_person_person = :gotID", Residence.class)
                 .setParameter("gotID", person_id);
+        if (query.getResultList().size() == 0) {
+            return null;
+        }
+        return query.getResultList();
+    }
+    public List<Residence> getResidenceAll() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query<Residence> query = session.createQuery("FROM Residence", Residence.class);
         if (query.getResultList().size() == 0) {
             return null;
         }

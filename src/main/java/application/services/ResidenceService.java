@@ -23,4 +23,5 @@ public class ResidenceService {
         return residenceDAO.getResidenceByAddress(address);
     }
     public List<Residence> getResidenceByPerson(long person_id){return residenceDAO.getResidenceByPerson(person_id);}
+    public List<Residence> getResidenceAll(){return residenceDAO.getResidenceAll();}
 }

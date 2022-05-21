@@ -51,7 +51,7 @@ public class ResidenceController {
             Model model
     ) {
         Residence residence;
-        if(Objects.equals(check_out, "Неизвестно")){
+        if(Objects.equals(check_out, "неизвестно")){
             residence = new Residence(id,personService.getPersonById(personId),address,Date.valueOf(check_in),null);
         }
         else {
@@ -99,5 +99,13 @@ public class ResidenceController {
         residenceService.addResidence(residence);
 
         return personController.personPage(personId,model);
+    }
+    @GetMapping("/places")
+    public String placesPage(Model model) {
+
+        List<Residence> residences = residenceService.getResidenceAll();
+        model.addAttribute("residences",residences);
+
+        return "places";
     }
 }
